@@ -1,36 +1,130 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Player Info App
+
+A modern and responsive web application to display player details using Next.js and Tailwind CSS. The app fetches player data from an API and presents it in a clean, user-friendly interface.
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Running the App](#running-the-app)
+- [Project Structure](#project-structure)
+- [API](#api)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- Fetches player data from an external API
+- Displays player details including name, position, height, weight, team, and more
+- Responsive design using Tailwind CSS
+- Modern UI with user-friendly navigation
+- Error handling and data validation
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) - React framework for server-side rendering
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework for rapid UI development
+- [Node.js](https://nodejs.org/) - JavaScript runtime environment
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running, follow these steps:
+
+### Prerequisites
+
+Ensure you have the following installed on your machine:
+
+- [Node.js](https://nodejs.org/en/download/) (v12.x or later)
+- [npm](https://www.npmjs.com/get-npm) (v6.x or later) or [yarn](https://yarnpkg.com/getting-started/install)
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/almonteluis/player-info-app.git
+    cd player-info-app
+    ```
+
+2. Install the dependencies:
+
+    Using npm:
+
+    ```bash
+    npm install
+    ```
+
+    Using yarn:
+
+    ```bash
+    yarn install
+    ```
+
+## Running the App
+
+To run the development server:
+
+Using npm:
 
 ```bash
 npm run dev
-# or
+```
+Using yarn:
+
+```bash
+Copy code
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+/player-info-app
+|-- /components
+|   |-- PlayerCard.js        # Component to display player card
+|-- /pages
+|   |-- /api
+|   |   |-- players.js       # API route for fetching player data
+|   |-- /player
+|   |   |-- [id].js          # Dynamic route for player detail page
+|   |-- index.js             # Home page
+|-- /public
+|   |-- /images              # Public assets like images
+|-- /styles
+|   |-- globals.css          # Global CSS file with Tailwind imports
+|-- /utils
+|   |-- api.js               # Utility functions for API calls
+|-- .gitignore
+|-- package.json
+|-- README.md
+|-- tailwind.config.js       # Tailwind CSS configuration
+|-- postcss.config.js        # PostCSS configuration
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## API
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+This app uses an external API to fetch player data. Make sure you set the correct BASE_URL and API endpoints in your utils/api.js file.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Example API Usage
+Fetch a list of players:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+import { fetchPlayers } from '../utils/api';
 
-## Deploy on Vercel
+const players = await fetchPlayers();
+console.log(players);
+Fetch a single player by ID:
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+javascript
+Copy code
+import { fetchPlayerById } from '../utils/api';
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+const player = await fetchPlayerById(1);
+console.log(player);
+```
